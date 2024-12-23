@@ -24,7 +24,7 @@ public class Securityconfig {
         http.authorizeHttpRequests(request -> request.anyRequest().authenticated());//this will authenticate every requesst
         //but need form to authenticate
 
-//         http.formLogin(Customizer.withDefaults());
+//        http.formLogin(Customizer.withDefaults());
 
 
         //if this form login is not used hhtpbasic will give the login using browser
@@ -36,6 +36,14 @@ public class Securityconfig {
         http.sessionManagement(Session -> Session.sessionCreationPolicy(SessionCreationPolicy.STATELESS));
 
 
+
+        //this above can be written as
+
+//        http
+//                .csrf(customizer -> customizer.disable())
+//                .authorizeHttpRequests(request -> request.anyRequest().authenticated())
+//                .httpBasic(Customizer.withDefaults())
+//                .sessionManagement(Session -> Session.sessionCreationPolicy(SessionCreationPolicy.STATELESS));
 
         return http.build();
 
